@@ -23,6 +23,7 @@ app.use(cors());
 app.use(bodyParser.json({limit:'30mb',extended:true}));
 app.use(bodyParser.urlencoded({limit:'30mb',extended:true}));
 dotenv.config()
+mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_DB,{useNewUrlParser:true,useUnifiedTopology:true}).
 then(()=>app.listen(80,()=>console.log(`listening at ${process.env.PORT}`)))
 .catch((error)=>console.log(error));
